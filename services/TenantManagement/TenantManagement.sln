@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C80E4157-9358-4015-B9D2-BA5D7C0A9190}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		GlobalSuppressions.cs = GlobalSuppressions.cs
+		Readme.md = Readme.md
+		stylecop.json = stylecop.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B392D1D8-4843-432D-9792-47E9C4464D91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C8D32941-4AAF-42F8-B9B8-CA476A7A0966}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TenantManagement.Api", "src\TenantManagement.Api\TenantManagement.Api.csproj", "{84C2B298-D059-43CB-914F-319DB21804D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TenantManagement.Core", "src\TenantManagement.Core\TenantManagement.Core.csproj", "{6B413290-3CB3-42E9-A4F6-BE44EFE3D26E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TenantManagement.DataAccess", "src\TenantManagement.DataAccess\TenantManagement.DataAccess.csproj", "{004458B2-FE60-4E76-8399-C0899011AFFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TenantManagement.Messaging", "src\TenantManagement.Messaging\TenantManagement.Messaging.csproj", "{BF553D9E-B433-474A-A511-3198ACFC0701}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84C2B298-D059-43CB-914F-319DB21804D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84C2B298-D059-43CB-914F-319DB21804D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84C2B298-D059-43CB-914F-319DB21804D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84C2B298-D059-43CB-914F-319DB21804D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B413290-3CB3-42E9-A4F6-BE44EFE3D26E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B413290-3CB3-42E9-A4F6-BE44EFE3D26E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B413290-3CB3-42E9-A4F6-BE44EFE3D26E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B413290-3CB3-42E9-A4F6-BE44EFE3D26E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{004458B2-FE60-4E76-8399-C0899011AFFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{004458B2-FE60-4E76-8399-C0899011AFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{004458B2-FE60-4E76-8399-C0899011AFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{004458B2-FE60-4E76-8399-C0899011AFFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF553D9E-B433-474A-A511-3198ACFC0701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF553D9E-B433-474A-A511-3198ACFC0701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF553D9E-B433-474A-A511-3198ACFC0701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF553D9E-B433-474A-A511-3198ACFC0701}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{84C2B298-D059-43CB-914F-319DB21804D5} = {B392D1D8-4843-432D-9792-47E9C4464D91}
+		{6B413290-3CB3-42E9-A4F6-BE44EFE3D26E} = {B392D1D8-4843-432D-9792-47E9C4464D91}
+		{004458B2-FE60-4E76-8399-C0899011AFFB} = {B392D1D8-4843-432D-9792-47E9C4464D91}
+		{BF553D9E-B433-474A-A511-3198ACFC0701} = {B392D1D8-4843-432D-9792-47E9C4464D91}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D208AA92-3DAA-4438-8CD6-B7B3CB708995}
+	EndGlobalSection
+EndGlobal

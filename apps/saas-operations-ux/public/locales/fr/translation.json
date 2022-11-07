@@ -1,0 +1,134 @@
+{
+    "rs": {
+        "app_name": "Opérations SaaS",
+        "languages": {
+            "en": "Anglais",
+            "en-US": "Anglais (ÉU)",
+            "fr": "Français"
+        },
+        "tenants": {
+            "list": {
+                "title": "Locataires",
+                "buttons": {
+                    "refresh": "Rafraîchir",
+                    "provision": "Disposition",
+                    "delete": {
+                        "tooltip": "Supprimer le locataire"
+                    },
+                    "details": {
+                        "tooltip": "Détails du locataire"
+                    }
+                },
+                "table": {
+                    "tenant_id_column_name": "Identifiant",
+                    "tenant_name_column_name": "Nom",
+                    "tenant_code_column_name": "Code",
+                    "actions_column_name": "Actions"
+                }
+            },
+            "provision": {
+                "fields": {
+                    "tenant_name": {
+                        "label": "Nom du locataire"
+                    },
+                    "tenant_code": {
+                        "label": "Code locataire"
+                    },
+                    "administrator_email": {
+                        "label": "Courriel de l'administrateur"
+                    }
+                },
+                "validation": {
+                    "value_is_required": "Valeur est requise",
+                    "invalid_email_address": "Adresse e-mail invalide"
+                },
+                "buttons": {
+                    "cancel": {
+                        "label": "Annuler"
+                    },
+                    "provision": {
+                        "label": "Disposition"
+                    }
+                },
+                "notifications": {
+                    "provision_successful": "Le locataire '{{tenant_name}}' a été provisionné avec succès.",
+                    "provision_failed": "Échec de provisionnement du locataire '{{tenant_name}}'. {{error}}"
+                }
+            },
+            "details": {
+                "fields": {
+                    "tenant_id": {
+                        "label": "Identifiant du locataire"
+                    },
+                    "tenant_name": {
+                        "label": "Nom du locataire"
+                    },
+                    "tenant_code": {
+                        "label": "Code locataire"
+                    },
+                    "administrator_email": {
+                        "label": "Courriel de l'administrateur"
+                    },
+                    "administrator_id": {
+                        "label": "Identifiant de l'administrateur"
+                    },
+                    "cognito_user_pool_id": {
+                        "label": "Cognito Identifiant du groupe d'utilisateurs"
+                    },
+                    "cognito_user_pool_domain": {
+                        "label": "Cognito Domaine du groupe d'utilisateurs"
+                    },
+                    "cognito_client_app_id": {
+                        "label": "Cognito Identifiant de l'application cliente"
+                    }
+                },
+                "buttons": {
+                    "delete": {
+                        "label": "Effacer"
+                    },
+                    "close": {
+                        "label": "Fermer"
+                    }
+                },
+                "notifications": {
+                    "delete_tenant_successful": "Locataire supprimé avec succès",
+                    "delete_tenant_failed": "Échec de la suppression du locataire. {{error}}"
+                }
+            },
+            "delete_tenant_confirmation_dialog": {
+                "title": "Supprimer le locataire ?",
+                "description": "Pour confirmer la suppression du locataire suivant, veuillez saisir l'<strong>identifiant du locataire</strong> dans le champ de confirmation ci-dessous. Notez que cette opération est destructive et ne peut pas être annulée.",
+                "fields": {
+                    "tenant_name": "Nom du locataire",
+                    "tenant_code": "Code locataire",
+                    "tenant_id": "Identifiant du locataire",
+                    "confirm_tenant_id": "Confirmer l'identifiant du locataire"
+                },
+                "buttons": {
+                    "delete": {
+                        "label": "Supprimer"
+                    },
+                    "cancel": {
+                        "label": "Annuler"
+                    }
+                }
+            }
+        },
+        "profile": {
+            "tooltip": "Profil",
+            "menu": {
+                "buttons": {
+                    "sign_out": "Déconnexion"
+                }
+            },
+            "language_picker_dialog": {
+                "title": "Sélection de la langue",
+                "description": "Veuillez sélectionner votre langue préférée dans la liste ci-dessous.",
+                "buttons": {
+                    "cancel": "Annuler",
+                    "apply": "Appliquer"
+                }
+            }
+        }
+    }
+}

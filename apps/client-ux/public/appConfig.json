@@ -1,0 +1,6 @@
+{
+  "isDebug": true,
+  "cognitoUrl": "https://cognito-idp.us-east-1.amazonaws.com",
+  "appUrl": "http://localhost:3002/",
+  "adminApiUrl": "http://localhost:3002/tenant-management/api"
+}

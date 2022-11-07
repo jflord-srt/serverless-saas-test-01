@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "strictNullChecks": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src"
+  ]
+}

@@ -1,0 +1,5 @@
+﻿# All files
+# Sets generated code for all migrations
+[*]
+generated_code = true
+dotnet_diagnostic.CS1591.severity = none

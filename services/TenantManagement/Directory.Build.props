@@ -1,0 +1,38 @@
+<Project>
+    <PropertyGroup>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <LangVersion>latest</LangVersion>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Configure assembly names and namespaces">
+        <AssemblyName>SilkRoad.$(MSBuildProjectName)</AssemblyName>
+        <RootNamespace>$(AssemblyName)</RootNamespace>
+        <Product>$(AssemblyName)</Product>
+        <AssemblyCompany>SilkRoad Technology Inc.</AssemblyCompany>
+        <AssemblyCopyright>Copyright © SilkRoad Technology Inc. All rights reserved.</AssemblyCopyright>
+        <AssemblyVersion>0.1.0.0</AssemblyVersion>
+        <FileVersion>0.1.0.0</FileVersion>
+        <InformationalVersion>0.1.0.0</InformationalVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Roslynator.Analyzers" Version="4.1.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.43.0.51858">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <AdditionalFiles Include="..\..\stylecop.json" Link="stylecop.json" />
+        <Compile Include="..\..\GlobalSuppressions.cs" Link="GlobalSuppressions.cs" />
+    </ItemGroup>
+</Project>

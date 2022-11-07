@@ -1,0 +1,169 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Transform": "AWS::Serverless-2016-10-31",
+    "Description": "An AWS Serverless Application that uses the ASP.NET Core framework running in Amazon Lambda.",
+    "Parameters": {
+        "RootUserEmailAddress": {
+            "Type": "String",
+            "Description": "The email address of the root user. Used to bootstrap the SaaS operations."
+        },
+        "EnvironmentName": {
+            "Type": "String",
+            "Default": "Development",
+            "AllowedValues": [ "Production", "Staging", "Alpha", "Beta", "Development" ],
+            "Description": "A discriminator value used to name resources associated to the given environment."
+        },
+        "RDSEndpoint": {
+            "Type": "String",
+            "Description": "The RDS endpoint used to connect to the Aurora/MySQL database."
+        },
+        "CognitoUserPoolDomainName": {
+            "Type": "String",
+            "Default": "saas-operations-auth",
+            "Description": "The Cognito user pool domain name used to host the cognito authentication user interface. (Note this should derived from 'EnvironmentName' but the lowercase requirements make that difficult in a SAM template)"
+        },
+        "SaasOperationsUiUrl": {
+            "Type": "String",
+            "Description": "The CloudFront URL where the SaaS operations UI is hosted."
+        }
+    },
+    "Conditions": {},
+    "Resources": {
+        "SaaSOperationsUserPool": {
+            "Type": "AWS::Cognito::UserPool",
+            "Properties": {
+                "UserPoolName": { "Fn::Sub": "${EnvironmentName}-SaaS-Operations-UserPool" },
+                "UsernameAttributes": [
+                    "email"
+                ],
+                "Policies": {
+                    "PasswordPolicy": {
+                        "MinimumLength": 8
+                    }
+                },
+                "Schema": [
+                    {
+                        "AttributeDataType": "String",
+                        "Name": "email",
+                        "Required": true
+                    }
+                ]
+            }
+        },
+        "SaaSOperationsUserPoolDomain": {
+            "Type": "AWS::Cognito::UserPoolDomain",
+            "Properties": {
+                "UserPoolId": { "Ref": "SaaSOperationsUserPool" },
+                "Domain": { "Ref": "CognitoUserPoolDomainName" }
+            }
+        },
+        "SaaSOperationsUserPoolUser": {
+            "Type": "AWS::Cognito::UserPoolUser",
+            "Properties": {
+                "DesiredDeliveryMediums": [
+                    "EMAIL"
+                ],
+                "Username": { "Ref": "RootUserEmailAddress" },
+                "UserPoolId": { "Ref": "SaaSOperationsUserPool" }
+            }
+        },
+        "SaaSOperationsUserPoolClient": {
+            "Type": "AWS::Cognito::UserPoolClient",
+            "Properties": {
+                "ClientName": "saas-operations-ux",
+                "UserPoolId": { "Ref": "SaaSOperationsUserPool" },
+                "GenerateSecret": false,
+                "AllowedOAuthFlowsUserPoolClient": true,
+                "AllowedOAuthFlows": [
+                    "code",
+                    "implicit"
+                ],
+                "SupportedIdentityProviders": [
+                    "COGNITO"
+                ],
+                "CallbackURLs": [
+                    { "Ref": "SaasOperationsUiUrl" },
+                    "http://localhost:3001/"
+                ],
+                "LogoutURLs": [
+                    { "Ref": "SaasOperationsUiUrl" },
+                    "http://localhost:3001/"
+                ],
+                "AllowedOAuthScopes": [
+                    "email",
+                    "openid",
+                    "profile"
+                ]
+            }
+        },
+        "TenantManagementInvokeFunction": {
+            "Type": "AWS::Serverless::Function",
+            "Properties": {
+                "FunctionName": { "Fn::Sub": "${EnvironmentName}-TenantManagement-Api-Invoke" },
+                "Handler": "SilkRoad.TenantManagement.Api::SilkRoad.TenantManagement.Api.LambdaEntryPoint::FunctionHandlerAsync",
+                "Runtime": "dotnet6",
+                "CodeUri": "",
+                "MemorySize": 1024,
+                "Timeout": 30,
+                "Role": null,
+                "Policies": [
+                    "AWSLambda_FullAccess",
+                    "AmazonCognitoPowerUser",
+                    "AWSLambdaVPCAccessExecutionRole",
+                    {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "rds-db:connect"
+                                ],
+                                "Resource": [
+                                    { "Fn::Sub": "arn:aws:rds-db:${AWS::Region}:${AWS::AccountId}:dbuser:*/${EnvironmentName}-TenantManagement" }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "Environment": {
+                    "Variables": {
+                        "ASPNETCORE_ENVIRONMENT": { "Ref": "EnvironmentName" },
+                        "App__AWS__Region": { "Fn::Sub": "${AWS::Region}" },
+                        "App__AWS__UserPoolId": { "Ref": "SaaSOperationsUserPool" },
+                        "App__AWS__AppClientId": { "Ref": "SaaSOperationsUserPoolClient" },
+                        "App__DataAccess__DataContext__Host": { "Ref": "RDSEndpoint" },
+                        "App__DataAccess__DataContext__Database": { "Fn::Sub": "${EnvironmentName}-TenantManagement" },
+                        "App__DataAccess__DataContext__User": { "Fn::Sub": "${EnvironmentName}-TenantManagement" },
+                        "App__DataAccess__DataContext__Password": "IAM",
+                        "App__DataAccess__DataContext__Port": "3306",
+                        "Logging__LogLevel__Default": "Information"
+                    }
+                },
+                "Events": {
+                    "ProxyResource": {
+                        "Type": "HttpApi",
+                        "Properties": {
+                            "Path": "/{proxy+}",
+                            "Method": "ANY"
+                        }
+                    },
+                    "RootResource": {
+                        "Type": "HttpApi",
+                        "Properties": {
+                            "Path": "/",
+                            "Method": "ANY"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "ApiURL": {
+            "Description": "API endpoint URL for Prod environment",
+            "Value": {
+                "Fn::Sub": "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/${EnvironmentName}/"
+            }
+        }
+    }
+}

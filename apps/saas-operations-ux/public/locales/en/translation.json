@@ -1,0 +1,134 @@
+{
+    "rs": {
+        "app_name": "SaaS Operations",
+        "languages": {
+            "en": "English",
+            "en-US": "English (US)",
+            "fr": "French"
+        },
+        "tenants": {
+            "list": {
+                "title": "Tenants",
+                "buttons": {
+                    "refresh": "Refresh",
+                    "provision": "Provision",
+                    "delete": {
+                        "tooltip": "Delete Tenant"
+                    },
+                    "details": {
+                        "tooltip": "Tenant Details"
+                    }
+                },
+                "table": {
+                    "tenant_id_column_name": "Id",
+                    "tenant_name_column_name": "Name",
+                    "tenant_code_column_name": "Code",
+                    "actions_column_name": "Actions"
+                }
+            },
+            "provision": {
+                "fields": {
+                    "tenant_name": {
+                        "label": "Tenant Name"
+                    },
+                    "tenant_code": {
+                        "label": "Tenant Code"
+                    },
+                    "administrator_email": {
+                        "label": "Administrator Email"
+                    }
+                },
+                "validation": {
+                    "value_is_required": "Value is required",
+                    "invalid_email_address": "Invalid email address"
+                },
+                "buttons": {
+                    "cancel": {
+                        "label": "Cancel"
+                    },
+                    "provision": {
+                        "label": "Provision"
+                    }
+                },
+                "notifications": {
+                    "provision_successful": "Tenant '{{tenant_name}}' was provisioned successfully",
+                    "provision_failed": "Failed to provision tenant '{{tenant_name}}'. {{error}}"
+                }
+            },
+            "details": {
+                "fields": {
+                    "tenant_id": {
+                        "label": "Tenant Id"
+                    },
+                    "tenant_name": {
+                        "label": "Tenant Name"
+                    },
+                    "tenant_code": {
+                        "label": "Tenant Code"
+                    },
+                    "administrator_email": {
+                        "label": "Administrator Email"
+                    },
+                    "administrator_id": {
+                        "label": "Administrator Id"
+                    },
+                    "cognito_user_pool_id": {
+                        "label": "Cognito User Pool Id"
+                    },
+                    "cognito_user_pool_domain": {
+                        "label": "Cognito User Pool Domain"
+                    },
+                    "cognito_client_app_id": {
+                        "label": "Cognito Client App Id"
+                    }
+                },
+                "buttons": {
+                    "delete": {
+                        "label": "Delete"
+                    },
+                    "close": {
+                        "label": "Close"
+                    }
+                },
+                "notifications": {
+                    "delete_tenant_successful": "Tenant deleted successfully",
+                    "delete_tenant_failed": "Failed to delete tenant. {{error}}"
+                }
+            },
+            "delete_tenant_confirmation_dialog": {
+                "title": "Delete Tenant?",
+                "description": "To confirm deletion of the following tenant, please enter the <strong>Tenant Id</strong> in the confirmation field bellow. Note that this operation is destructive and cannot be undone.",
+                "fields": {
+                    "tenant_name": "Tenant Name",
+                    "tenant_code": "Tenant Code",
+                    "tenant_id": "Tenant Id",
+                    "confirm_tenant_id": "Confirm Tenant Id"
+                },
+                "buttons": {
+                    "delete": {
+                        "label": "Delete"
+                    },
+                    "cancel": {
+                        "label": "Cancel"
+                    }
+                }
+            }
+        },
+        "profile": {
+            "tooltip": "Profile",
+            "menu": {
+                "buttons": {
+                    "sign_out": "Sign out"
+                }
+            },
+            "language_picker_dialog": {
+                "title": "Language Selection",
+                "description": "Please select your preferred language from the list bellow.",
+                "buttons": {
+                    "cancel": "Cancel",
+                    "apply": "Apply"
+                }
+            }
+        }
+    }
+}

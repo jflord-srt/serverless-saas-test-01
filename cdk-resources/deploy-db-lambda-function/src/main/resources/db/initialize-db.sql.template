@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS `{{dbname}}`;
+
+CREATE USER IF NOT EXISTS '{{dbusername}}'@'%' IDENTIFIED BY '{{dbpassword}}';
+
+ALTER USER '{{dbusername}}'@'%' IDENTIFIED BY '{{dbpassword}}';
+
+GRANT ALL PRIVILEGES ON `{{dbname}}`.* TO '{{dbusername}}'@'%';
+
+FLUSH PRIVILEGES;

@@ -1,0 +1,17 @@
+
+{
+    "Information" : [
+        "This file provides default values for the deployment wizard inside Visual Studio and the AWS Lambda commands added to the .NET Core CLI.",
+        "To learn more about the Lambda commands with the .NET Core CLI execute the following command at the command line in the project root directory.",
+        "dotnet lambda help",
+        "All the command line options for the Lambda command can be specified in this file."
+    ],
+    "profile"     : "default",
+    "region"      : "us-east-1",
+    "configuration" : "Release",
+    "s3-prefix"     : "TenantManagement.Api/",
+    "template"      : "serverless-template.json",
+    "template-parameters" : "\"RootUserEmailAddress\"=\"jean.lord@silkroad.com\";\"EnvironmentName\"=\"Development\";\"RDSEndpoint\"=\"development-rds-proxy.proxy-ciroy6hpkzhf.us-east-1.rds.amazonaws.com\";\"CognitoUserPoolDomainName\"=\"development-saas-operations\";\"SaasOperationsUiUrl\"=\"https://d1b9qivjdqx76q.cloudfront.net/\"",
+    "s3-bucket"           : "aws-sam-cli-managed-default-samclisourcebucket-8jbn3aq6vnvz",
+    "stack-name"          : "Development-TenantManagement"
+}
